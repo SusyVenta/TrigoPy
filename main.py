@@ -3,16 +3,16 @@ import json
 import math
 
 sides = {
-    "a": {"value": 91,
+    "a": {"value": None,
           "is_hypotenuse": False},
-    "b": {"value": 109,
-          "is_hypotenuse": True},
-    "c": {"value": None,
+    "b": {"value": 105,
+          "is_hypotenuse": False},
+    "c": {"value": 76,
           "is_hypotenuse": False}
 }
 
 angles = {
-    "A": {"value": 91/109,
+    "A": {"value": 29,
           "unit": "deg",
           "sine": None,
           "cosine": None,
@@ -20,7 +20,7 @@ angles = {
           "opposite": "a",
           "hypotenuse": None,
           "adjacent": None},
-    "B": {"value": 90,
+    "B": {"value": None,
           "unit": "deg",
           "sine": None,
           "cosine": None,
@@ -44,7 +44,7 @@ def main(sides, angles):
     triangle = Triangle()
 
     tried_n = 0
-    while tried_n < 100:
+    while tried_n < 1000:
         triangle.sides = triangle.assign_known_sides(known_sides=sides, known_angles=angles)
         triangle.angles = triangle.assign_known_angles(known_angles=angles, known_sides=sides)
         triangle.sides = triangle.assign_known_sides(known_sides=sides, known_angles=angles)

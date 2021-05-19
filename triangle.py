@@ -208,8 +208,8 @@ class Triangle:
                             pass
                     else:
                         if self.angles[angle_name]["opposite"] is not None and self.angles[angle_name]["adjacent"] is not None:
-                            self.angles[angle_name]["tangent"] = (self.angles[angle_name]["opposite"] /
-                                                                  self.angles[angle_name]["adjacent"])
+                            self.angles[angle_name]["tangent"] = (self.sides[self.angles[angle_name]["opposite"]]["value"] /
+                                                                  self.sides[self.angles[angle_name]["adjacent"]]["value"])
                             print("\n------------------------------------------------------------------------------")
                             print(f"tangent({angle_name}) = opposite({angle_name}) / adjacent({angle_name}) = "
                                   f"{self.angles[angle_name]['opposite']} / {self.angles[angle_name]['adjacent']} = \n"
@@ -262,6 +262,12 @@ class Triangle:
                     hypotenuse = side_name
 
             for angle_name, angle_properties in self.angles.items():
+                if angle_properties["value"] is not None and angle_properties["cosine"] is None:
+                    self.angles[angle_name]["cosine"] = math.cos(math.radians(angle_properties["value"]))
+                    print("\n------------------------------------------------------------------------------")
+                    print(f"Deriving cosine directly from angle: Cos ({angle_name}) = cos({angle_properties['value']})"
+                          f"= {self.angles[angle_name]['cosine']}")
+
                 if angle_properties["cosine"] is None:
                     if hypotenuse is not None:
                         if angle_properties["adjacent"] is not None:
