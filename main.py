@@ -3,12 +3,12 @@ import json
 import math
 
 sides = {
-    "a": {"value": 1,
+    "a": {"value": None,
           "is_hypotenuse": False},
-    "b": {"value": 1,
+    "b": {"value": 23,
           "is_hypotenuse": False},
-    "c": {"value": math.sqrt(2),
-          "is_hypotenuse": True}
+    "c": {"value": 19,
+          "is_hypotenuse": False}
 }
 
 angles = {
@@ -28,7 +28,7 @@ angles = {
           "opposite": "b",
           "hypotenuse": None,
           "adjacent": None},
-    "C": {"value": None,
+    "C": {"value": 40,
           "unit": "deg",
           "sine": None,
           "cosine": None,
@@ -40,10 +40,11 @@ angles = {
 
 
 def main(sides, angles):
-    triangle = Triangle(known_sides=sides, known_angles=angles)
+    print("### START")
+    triangle = Triangle()
 
     tried_n = 0
-    while tried_n < 1000:
+    while tried_n < 10:
         triangle.sides = triangle.assign_known_sides(known_sides=sides, known_angles=angles)
         triangle.angles = triangle.assign_known_angles(known_angles=angles, known_sides=sides)
         triangle.sides = triangle.assign_known_sides(known_sides=sides, known_angles=angles)
@@ -57,7 +58,8 @@ def main(sides, angles):
         triangle.angles = triangle.get_angles_in_right_triangle()
         triangle.sides = triangle.get_missing_sides()
 
-        if angles["B"]["tangent"] is not None:
+        if (angles["B"]["value"] is not None) and (
+            sides["a"]["value"] is not None) and (angles["B"]["value"] is not None):
             break
         tried_n += 1
 
