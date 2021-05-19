@@ -4,15 +4,15 @@ import math
 
 sides = {
     "a": {"value": None,
+          "is_hypotenuse": True},
+    "b": {"value": 10,
           "is_hypotenuse": False},
-    "b": {"value": 105,
-          "is_hypotenuse": False},
-    "c": {"value": 76,
+    "c": {"value": 10,
           "is_hypotenuse": False}
 }
 
 angles = {
-    "A": {"value": 29,
+    "A": {"value": 90,
           "unit": "deg",
           "sine": None,
           "cosine": None,

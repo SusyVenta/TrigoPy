@@ -26,8 +26,8 @@ def get_angle_from_ratio(number, ratio="cosine", result_in_degrees=True):
         return math.degrees(angle)
 
 
-print(get_angle_from_ratio(number=0.5, ratio="cosine"))
+# print(get_angle_from_ratio(number=1/6, ratio="sine"))
 
-print(convert_to(number=225, to="radians"))
+# print(convert_to(number=2.5, to="degrees"))
 
-print(math.sin(math.radians(40)))
+print(math.cos(math.radians(9.594068226860461)))

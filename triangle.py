@@ -313,7 +313,7 @@ class Triangle:
                 else:
                     catheti_names.append(side_name)
                     catheti_values.append(self.sides[side_name]["value"])
-            if hypotenuse_value is not None and len(catheti_values) == 2:
+            if hypotenuse_value is None and len(catheti_values) == 2:
                 if catheti_values[0] is not None and catheti_values[1] is not None:
                     hypotenuse_value = math.sqrt(catheti_values[0] ** 2 + catheti_values[1] ** 2)
                     self.sides[hypotenuse_name]["value"] = hypotenuse_value
