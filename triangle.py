@@ -197,31 +197,32 @@ class Triangle:
 
         if hypotenuse is not None:
             for angle_name, angle_properties in self.angles.items():
-                if angle_properties["cosine"] is not None and angle_properties["sine"] is not None:
-                    try:
-                        self.angles[angle_name]["tangent"] = angle_properties["sine"] / angle_properties["cosine"]
-                        print("\n------------------------------------------------------------------------------")
-                        print(f"tangent({angle_name}) = sine({angle_name}) / cosin({angle_name}) = "
-                              f"{self.angles[angle_name]['tangent']}")
-                    except ZeroDivisionError:
-                        pass
-                else:
-                    if self.angles[angle_name]["opposite"] is not None and self.angles[angle_name]["adjacent"] is not None:
-                        self.angles[angle_name]["tangent"] = (self.angles[angle_name]["opposite"] /
-                                                              self.angles[angle_name]["adjacent"])
-                        print("\n------------------------------------------------------------------------------")
-                        print(f"tangent({angle_name}) = opposite({angle_name}) / adjacent({angle_name}) = "
-                              f"{self.angles[angle_name]['opposite']} / {self.angles[angle_name]['adjacent']} = \n"
-                              f"{self.angles[angle_name]['tangent']}")
-                    else:
-                        if angle_properties["value"] is not None:
-                            value = angle_properties["value"]
-                            if angle_properties["unit"] == "deg":
-                                value = math.radians(value)
-                            self.angles[angle_name]["tangent"] = math.tan(value)
+                if self.angles[angle_name]["tangent"] is None:
+                    if angle_properties["cosine"] is not None and angle_properties["sine"] is not None:
+                        try:
+                            self.angles[angle_name]["tangent"] = angle_properties["sine"] / angle_properties["cosine"]
                             print("\n------------------------------------------------------------------------------")
-                            print(f"tangent({angle_name}) = tan({angle_name}) = tan({value}) = "
+                            print(f"tangent({angle_name}) = sine({angle_name}) / cosin({angle_name}) = "
                                   f"{self.angles[angle_name]['tangent']}")
+                        except ZeroDivisionError:
+                            pass
+                    else:
+                        if self.angles[angle_name]["opposite"] is not None and self.angles[angle_name]["adjacent"] is not None:
+                            self.angles[angle_name]["tangent"] = (self.angles[angle_name]["opposite"] /
+                                                                  self.angles[angle_name]["adjacent"])
+                            print("\n------------------------------------------------------------------------------")
+                            print(f"tangent({angle_name}) = opposite({angle_name}) / adjacent({angle_name}) = "
+                                  f"{self.angles[angle_name]['opposite']} / {self.angles[angle_name]['adjacent']} = \n"
+                                  f"{self.angles[angle_name]['tangent']}")
+                        else:
+                            if angle_properties["value"] is not None:
+                                value = angle_properties["value"]
+                                if angle_properties["unit"] == "deg":
+                                    value = math.radians(value)
+                                self.angles[angle_name]["tangent"] = math.tan(value)
+                                print("\n------------------------------------------------------------------------------")
+                                print(f"tangent({angle_name}) = tan({angle_name}) = tan({value}) = "
+                                      f"{self.angles[angle_name]['tangent']}")
         return self.angles
 
     def get_cosines(self):

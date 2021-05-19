@@ -8,8 +8,9 @@ def convert_to(number, to="radians"):
     :return: converted number
     """
     if to == "degrees":
+        print("--------------- degrees to radians: deg * 180 / pi")
         return math.degrees(number)
-
+    print("--------------- degrees to radians: deg / 180 * pi")
     return math.radians(number)
 
 
